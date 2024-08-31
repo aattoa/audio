@@ -1,17 +1,17 @@
 CFLAGS = -std=c99 -Wall -Wextra -Wpedantic -Werror -Os
 CC     = cc
 
-SOURCES = main.c buffer.c
+SOURCES = main.c buffer.c view.c
 OBJECTS = ${SOURCES:.c=.o}
 BINARY  = audio
 
-all: $(BINARY)
+all: ${BINARY}
 
-$(BINARY): $(OBJECTS)
-	$(CC) -o $@ $^
+${BINARY}: ${OBJECTS}
+	${CC} -o $@ $^
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c -o $@ $^
+	${CC} ${CFLAGS} -c -o $@ $^
 
 clean:
-	rm $(BINARY) *.o
+	rm ${BINARY} *.o

@@ -1,4 +1,5 @@
 #include "buffer.h"
+#include "view.h"
 #include <stdio.h>
 
 int main(void) {

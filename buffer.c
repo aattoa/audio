@@ -54,6 +54,10 @@ enum buffer_status buffer_copy(struct buffer *destination, struct buffer *source
     return buffer_status;
 }
 
+struct view buffer_view(struct buffer *buffer) {
+    return (struct view) { .len = buffer->len, .ptr = buffer->ptr };
+}
+
 void buffer_free(struct buffer *buffer) {
     if (buffer->ptr) {
         free(buffer->ptr);

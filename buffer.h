@@ -1,6 +1,7 @@
 #ifndef AUDIO_BUFFER_H
 #define AUDIO_BUFFER_H
 
+#include "view.h"
 #include <stddef.h>
 #include <stdio.h>
 
@@ -23,6 +24,8 @@ enum buffer_status buffer_read_stream(struct buffer *buffer, FILE *stream);
 enum buffer_status buffer_read(struct buffer *buffer, const char *path);
 
 enum buffer_status buffer_copy(struct buffer *destination, struct buffer *source);
+
+struct view buffer_view(struct buffer *buffer);
 
 void buffer_free(struct buffer *buffer);
 

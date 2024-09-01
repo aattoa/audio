@@ -1,7 +1,7 @@
 CFLAGS = -std=c99 -Wall -Wextra -Wpedantic -Werror -Os
 CC     = cc
 
-SOURCES = main.c buffer.c view.c
+SOURCES = main.c buffer.c view.c wav.c util.c
 OBJECTS = ${SOURCES:.c=.o}
 BINARY  = audio
 

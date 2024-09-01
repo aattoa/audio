@@ -29,8 +29,8 @@ bool view_remove_suffix_n(struct view *view, size_t n);
 
 bool view_remove_suffix(struct view *view, struct view suffix);
 
-void view_remove_prefix_unchecked(struct view *view, size_t n);
+void view_remove_prefix_unchecked(struct view *view, size_t length);
 
-void view_remove_suffix_unchecked(struct view *view, size_t n);
+void view_remove_suffix_unchecked(struct view *view, size_t length);
 
 #endif // AUDIO_VIEW_H

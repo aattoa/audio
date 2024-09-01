@@ -67,11 +67,11 @@ bool view_remove_suffix(struct view *view, struct view suffix) {
     return false;
 }
 
-void view_remove_prefix_unchecked(struct view *view, size_t n) {
-    view->len -= n;
-    view->ptr += n;
+void view_remove_prefix_unchecked(struct view *view, size_t length) {
+    view->len -= length;
+    view->ptr += length;
 }
 
-void view_remove_suffix_unchecked(struct view *view, size_t n) {
-    view->len -= n;
+void view_remove_suffix_unchecked(struct view *view, size_t length) {
+    view->len -= length;
 }

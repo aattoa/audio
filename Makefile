@@ -1,4 +1,4 @@
-CFLAGS = -std=c99 -Wall -Wextra -Wpedantic -Werror -Os
+CFLAGS = -std=c99 -Wall -Wextra -Wpedantic -Werror -Os `sdl2-config --cflags`
 CC     = cc
 
 SOURCES = main.c buffer.c view.c wav.c util.c
@@ -8,10 +8,10 @@ BINARY  = audio
 all: ${BINARY}
 
 ${BINARY}: ${OBJECTS}
-	${CC} -o $@ $^
+	${CC} `sdl2-config --libs` -o $@ $^
 
 %.o: %.c
 	${CC} ${CFLAGS} -c -o $@ $^
 
 clean:
-	rm ${BINARY} *.o
+	rm ${BINARY} ${OBJECTS}

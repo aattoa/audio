@@ -11,12 +11,32 @@ void die(const char *fmt, ...) {
     exit(EXIT_FAILURE);
 }
 
-// TODO: handle byteswap for big endian machines
-
-int16_t read_le_i16(const void *data) {
-    return *(const int16_t*)data;
+enum endianness system_endianness(void) {
+    int x = 1;
+    return (x == *(char*)&x) ? endianness_little : endianness_big;
 }
 
-int32_t read_le_i32(const void *data) {
-    return *(const int32_t*)data;
+int16_t read_i16(const void* data, enum endianness endianness) {
+    int16_t value = *(const int16_t*)data;
+    if (system_endianness() != endianness) {
+        swap_byte_order(&value, sizeof value);
+    }
+    return value;
+}
+
+int32_t read_i32(const void* data, enum endianness endianness) {
+    int32_t value = *(const int32_t*)data;
+    if (system_endianness() != endianness) {
+        swap_byte_order(&value, sizeof value);
+    }
+    return value;
+}
+
+void swap_byte_order(void *data, size_t size) {
+    assert(data != NULL && size != 0);
+    for (char *a = data, *b = a + size - 1; a < b; ++a, --b) {
+        char c = *b;
+        *b = *a;
+        *a = c;
+    }
 }

@@ -3,6 +3,7 @@
 
 #include "view.h"
 #include <stdint.h>
+#include <stdio.h>
 
 struct wav_info {
     int32_t file_size;
@@ -13,6 +14,7 @@ struct wav_info {
     int16_t channel_count;
     int16_t bits_per_sample;
     int16_t block_alignment;
+    size_t  data_offset;
 };
 
 enum wav_parse_status {
@@ -36,5 +38,7 @@ enum wav_parse_status {
 enum wav_parse_status wav_parse(struct wav_info *output, struct view input);
 
 const char *wav_parse_status_describe(enum wav_parse_status status);
+
+void wav_info_display(FILE *stream, const struct wav_info *wav);
 
 #endif // AUDIO_WAV_H
